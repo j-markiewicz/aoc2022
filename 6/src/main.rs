@@ -11,14 +11,14 @@ fn main() {
 		.collect::<Vec<_>>();
 
 	for window in input.windows(SIZE_1) {
-		if HashSet::<char>::from_iter(window.iter().map(|d| d.1)).len() == SIZE_1 {
+		if window.iter().map(|d| d.1).collect::<HashSet<char>>().len() == SIZE_1 {
 			println!("1: {}", window[SIZE_1 - 1].0 + 1);
 			break;
 		}
 	}
 
 	for window in input.windows(SIZE_2) {
-		if HashSet::<char>::from_iter(window.iter().map(|d| d.1)).len() == SIZE_2 {
+		if window.iter().map(|d| d.1).collect::<HashSet<char>>().len() == SIZE_2 {
 			println!("2: {}", window[SIZE_2 - 1].0 + 1);
 			break;
 		}

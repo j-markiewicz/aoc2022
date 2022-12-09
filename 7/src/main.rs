@@ -34,7 +34,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 					(r.get(6).map(|r| r.as_str()), r.get(8).map(|r| r.as_str()))
 				{
 					let mut path = String::new();
-					for l in loc.iter() {
+					for l in &loc {
 						path += "/";
 						path += l;
 					}
@@ -44,7 +44,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 		}
 	}
 
-	for (name, size) in sizes.iter() {
+	for (name, size) in &sizes {
 		let path = name.split('/').map(ToString::to_string).collect::<Vec<_>>();
 
 		for n in 1..path.len() {
@@ -66,8 +66,8 @@ fn main() -> Result<(), Box<dyn Error>> {
 	let total_size: u64 = dir_sizes.values().copied().filter(|&s| s <= 100_000).sum();
 	println!("1: {total_size}");
 
-	let space_needed = 30000000
-		- (70000000
+	let space_needed = 30_000_000
+		- (70_000_000
 			- dir_sizes
 				.get("")
 				.ok_or_else(|| IoError::from(ErrorKind::NotFound))?);
@@ -78,7 +78,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 		.filter(|&s| s >= space_needed)
 		.collect::<Vec<_>>();
 
-	dirs.sort();
+	dirs.sort_unstable();
 	println!("2: {}", dirs[0]);
 
 	Ok(())

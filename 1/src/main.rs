@@ -10,5 +10,5 @@ fn main() {
 	food.sort_by(|a, b| b.cmp(a));
 
 	println!("1: {}", food[0]);
-	println!("2: {}", food[0..=2].iter().sum::<u64>())
+	println!("2: {}", food[0..=2].iter().sum::<u64>());
 }
