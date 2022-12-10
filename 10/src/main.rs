@@ -30,10 +30,10 @@ fn main() -> Result<(), Box<dyn Error>> {
 
 	let mut sum = 0;
 	for i in 0..6 {
-		sum += xs[19 + i * 40]
+		sum += xs[19 + i * 40];
 	}
 
-	println!("1: {}", sum);
+	println!("1: {sum}");
 
 	let crt = crt
 		.iter()
