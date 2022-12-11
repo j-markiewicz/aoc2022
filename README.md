@@ -2,37 +2,13 @@
 
 The solution and input data for each day are located in that day's directory. Solutions are written in:
 
-| Day | Language |
-| --- | -------- |
-|   1 | [Rust]   |
-|   2 | [Python] |
-|   3 | [JS]     |
-|   4 | [Jupyter]|
-|   5 | [Python] |
-|   6 | [Rust]   |
-|   7 | [Rust]   |
-|   8 | [Rust]   |
-|   9 | [Jupyter]|
-|  10 | [Rust]   |
-|  11 | [C]      |
-|  12 | [None]   |
-|  13 | [None]   |
-|  14 | [None]   |
-|  15 | [None]   |
-|  16 | [None]   |
-|  17 | [None]   |
-|  18 | [None]   |
-|  19 | [None]   |
-|  20 | [None]   |
-|  21 | [None]   |
-|  22 | [None]   |
-|  23 | [None]   |
-|  24 | [None]   |
-|  25 | [None]   |
+|      **Day** |     1 |     2 |     3 |     4 |     5 |     6 |     7 |     8 |     9 |    10 |    11 |    12 |    13 |    14 |    15 |    16 |    17 |    18 |    19 |    20 |    21 |    22 |    23 |    24 |    25 |
+| ------------ | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Language** | [<div style="width: 32px; height: 32px; background-color: #fff; border-radius: 24px; padding: 8px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-plain.svg" width="32" height="32" /></div>][Rust] [Rust] | [<div style="width: 32px; height: 32px; background-color: #fff; border-radius: 24px; padding: 8px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="32" height="32" /></div>][Python] [Python] | [<div style="width: 32px; height: 32px; background-color: #fff; border-radius: 24px; padding: 8px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="32" height="32" /></div>][JavaScript] [JavaScript] | [<div style="width: 32px; height: 32px; background-color: #fff; border-radius: 24px; padding: 8px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original-wordmark.svg" width="32" height="32" /></div>][Jupyter] [Jupyter] | [<div style="width: 32px; height: 32px; background-color: #fff; border-radius: 24px; padding: 8px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="32" height="32" /></div>][Python] [Python] | [<div style="width: 32px; height: 32px; background-color: #fff; border-radius: 24px; padding: 8px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-plain.svg" width="32" height="32" /></div>][Rust] [Rust] | [<div style="width: 32px; height: 32px; background-color: #fff; border-radius: 24px; padding: 8px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-plain.svg" width="32" height="32" /></div>][Rust] [Rust] | [<div style="width: 32px; height: 32px; background-color: #fff; border-radius: 24px; padding: 8px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-plain.svg" width="32" height="32" /></div>][Rust] [Rust] | [<div style="width: 32px; height: 32px; background-color: #fff; border-radius: 24px; padding: 8px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original-wordmark.svg" width="32" height="32" /></div>][Jupyter] [Jupyter] | [<div style="width: 32px; height: 32px; background-color: #fff; border-radius: 24px; padding: 8px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-plain.svg" width="32" height="32" /></div>][Rust] [Rust] | [<div style="width: 32px; height: 32px; background-color: #fff; border-radius: 24px; padding: 8px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" width="32" height="32" /></div>][C] [C] | [**?**][None] [None] | [**?**][None] [None] | [**?**][None] [None] | [**?**][None] [None] | [**?**][None] [None] | [**?**][None] [None] | [**?**][None] [None] | [**?**][None] [None] | [**?**][None] [None] | [**?**][None] [None] | [**?**][None] [None] | [**?**][None] [None] | [**?**][None] [None] | [**?**][None] [None] |
 
 [Rust]: https://www.rust-lang.org/
 [Python]: https://www.python.org/
-[JS]: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript
+[JavaScript]: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript
 [Jupyter]: https://jupyter.org/
 [C]: https://en.wikipedia.org/wiki/C_(programming_language)
 [None]: https://en.wikipedia.org/wiki/Future
