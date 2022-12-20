@@ -1,0 +1,19 @@
+[package]
+name = "aoc2022-17"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+i_have_a_lot_of_time = []
+
+[dependencies]
+
+[profile.release]
+codegen-units = 1
+debug-assertions = false
+debug = true
+incremental = false
+lto = "fat"
+opt-level = 3
+overflow-checks = false
+panic = "unwind"
