@@ -1,31 +1,14 @@
+#[path = "part-1.rs"]
+mod part_1;
+#[path = "part-2.rs"]
+mod part_2;
+
 use std::{
+	env,
 	error::Error,
 	fmt::{Display, Formatter, Result as FmtResult},
 	fs,
 };
-
-#[derive(Copy, Clone, Debug, PartialEq, Eq)]
-#[repr(u8)]
-enum Facing {
-	Right = 0,
-	Down = 1,
-	Left = 2,
-	Up = 3,
-}
-
-#[derive(Copy, Clone, Debug, PartialEq, Eq)]
-enum Tile {
-	Empty,
-	Wall,
-	Path,
-}
-
-#[derive(Copy, Clone, Debug, PartialEq, Eq)]
-enum Instruction {
-	Walk(usize),
-	SpinLeft,
-	SpinRight,
-}
 
 #[derive(Debug)]
 struct EmptyError;
@@ -40,153 +23,10 @@ impl Display for EmptyError {
 
 fn main() -> Result<(), Box<dyn Error>> {
 	let input = fs::read_to_string("./input.txt")?;
-	let ml = input
-		.lines()
-		.take_while(|l| !l.trim().is_empty())
-		.map(|l| l.len())
-		.max()
-		.ok_or(EmptyError)?;
-	let mut map = vec![
-		vec![Tile::Empty; ml + 2];
-		input.lines().take_while(|l| !l.trim().is_empty()).count() + 2
-	];
+	let print_map = env::args().nth(1).map(|s| s == "-p").unwrap_or_default();
 
-	for (i, line) in input
-		.lines()
-		.take_while(|l| !l.trim().is_empty())
-		.enumerate()
-	{
-		for (j, char) in line.chars().enumerate() {
-			map[i + 1][j + 1] = match char {
-				' ' => Tile::Empty,
-				'#' => Tile::Wall,
-				'.' => Tile::Path,
-				_ => Err(EmptyError)?,
-			}
-		}
-	}
-
-	let mut instructions = input
-		.lines()
-		.rev()
-		.find(|l| !l.trim().is_empty())
-		.ok_or(EmptyError)?
-		.to_string();
-
-	let mut v_inst = Vec::new();
-	while !instructions.is_empty() {
-		let is_dist = instructions.chars().next().ok_or(EmptyError)?.is_numeric();
-		let inst = instructions
-			.chars()
-			.take_while(|c| c.is_numeric() == is_dist)
-			.collect::<String>();
-
-		instructions.drain(0..inst.len()).count();
-		v_inst.push(match inst.as_str() {
-			"L" => Instruction::SpinLeft,
-			"R" => Instruction::SpinRight,
-			d => Instruction::Walk(d.parse()?),
-		});
-	}
-
-	let instructions = v_inst;
-
-	let mut facing = Facing::Right;
-	let mut pos = (0usize, 0usize);
-
-	'find_pos: for (i, line) in map.iter().enumerate() {
-		for (j, tile) in line.iter().enumerate() {
-			if *tile == Tile::Path {
-				pos = (j, i);
-				break 'find_pos;
-			}
-		}
-	}
-
-	for inst in instructions {
-		match inst {
-			Instruction::SpinLeft => match facing {
-				Facing::Right => facing = Facing::Up,
-				Facing::Down => facing = Facing::Right,
-				Facing::Left => facing = Facing::Down,
-				Facing::Up => facing = Facing::Left,
-			},
-			Instruction::SpinRight => match facing {
-				Facing::Right => facing = Facing::Down,
-				Facing::Down => facing = Facing::Left,
-				Facing::Left => facing = Facing::Up,
-				Facing::Up => facing = Facing::Right,
-			},
-			Instruction::Walk(d) => {
-				for _ in 0..d {
-					match facing {
-						Facing::Right => pos.0 += 1,
-						Facing::Down => pos.1 += 1,
-						Facing::Left => pos.0 -= 1,
-						Facing::Up => pos.1 -= 1,
-					}
-
-					match map[pos.1][pos.0] {
-						Tile::Wall => match facing {
-							Facing::Right => pos.0 -= 1,
-							Facing::Down => pos.1 -= 1,
-							Facing::Left => pos.0 += 1,
-							Facing::Up => pos.1 += 1,
-						},
-						Tile::Path => continue,
-						Tile::Empty => match facing {
-							Facing::Right => {
-								for (i, tile) in map[pos.1].iter().enumerate() {
-									if *tile == Tile::Path {
-										pos = (i, pos.1);
-										break;
-									} else if *tile == Tile::Wall {
-										pos.0 -= 1;
-										break;
-									}
-								}
-							}
-							Facing::Down => {
-								for (j, line) in map.iter().enumerate() {
-									if line[pos.0] == Tile::Path {
-										pos = (pos.0, j);
-										break;
-									} else if line[pos.0] == Tile::Wall {
-										pos.1 -= 1;
-										break;
-									}
-								}
-							}
-							Facing::Left => {
-								for (i, tile) in map[pos.1].iter().enumerate().rev() {
-									if *tile == Tile::Path {
-										pos = (i, pos.1);
-										break;
-									} else if *tile == Tile::Wall {
-										pos.0 += 1;
-										break;
-									}
-								}
-							}
-							Facing::Up => {
-								for (j, line) in map.iter().enumerate().rev() {
-									if line[pos.0] == Tile::Path {
-										pos = (pos.0, j);
-										break;
-									} else if line[pos.0] == Tile::Wall {
-										pos.1 += 1;
-										break;
-									}
-								}
-							}
-						},
-					}
-				}
-			}
-		}
-	}
-
-	println!("1: {}", 1000 * pos.1 + 4 * pos.0 + (facing as usize),);
+	part_1::solve(&input, print_map)?;
+	part_2::solve(&input, print_map)?;
 
 	Ok(())
 }
